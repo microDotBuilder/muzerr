@@ -1,13 +1,18 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import { ThemeSwitch } from "@/components/ui/theme-switch";
+
+import { createRoom } from "@/firebase/firestore";
 
 export default function Home() {
+    const handleCreateRoom = async () => {
+        console.log("createRoom");
+        const roomId = await createRoom("test");
+        console.log("roomId :-> ", roomId);
+    };
     return (
         <div className="flex h-screen items-center justify-center">
-            <ThemeSwitch />
-            <Button>Click me</Button>
+            <Button onClick={handleCreateRoom}>Click me</Button>
         </div>
     );
 }
